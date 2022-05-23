@@ -1,0 +1,2 @@
+# Enumerating linux host
+enum4linux -a 10.10.98.154 | tee /home/kali/Documents/enum4linux.log
